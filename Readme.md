@@ -1,11 +1,11 @@
-Mysql
+# Mysql
 http://localhost:8090/phpmyadmin
 XAMPP
 phpMyAdmin
 moteur de stokage : InnoDB ou MyISAM
 
 
-#-------------------- CREATE ----------------------
+## CREATE 
 CREATE DATABASE mydatabase;
 DEFAULT CHARACTER SET utf8;
 DEFAULT COLLATE utf8_general_ci;
@@ -35,11 +35,11 @@ DEFAULT COLLATE utf8_general_ci;
 
 
 
-#-------------------- DROP ----------------------
+## DROP 
 DROP DATABASE mydatabase;
 DROP TABLE utilisateurs2;
 
-#------------------- DELETE -----------------------
+## DELETE 
 DELETE FROM utilisateurs;
 DELETE FROM utilisateurs WHERE nom='bounanoira';
 DELETE FROM utilisateurs WHERE nom='bounaoira' LIMIT 1;
@@ -48,7 +48,7 @@ TRUNCATE TABLE utilisateurs;                            //suppprimer la table av
 
 
 
-#--------- ALTER TABLE -----------------------------
+## ALTER TABLE 
 ALTER TABLE utilisateurs ADD ville VARCHAR(20) NOT NULL;
 ALTER TABLE utilisateurs ADD pays VARCHAR(2) NOT NULL; 
 ALTER TABLE utilisateurs ADD INDEX(sexe);
@@ -57,7 +57,7 @@ ALTER TABLE utilisateurs MODIFY birthday DATETIME NOT NULL;
 
 
 
-#-------------------- SELECT ----------------------
+## SELECT 
 SELECT * FROM customers;
 SELECT id,first_name,last_name FROM customers;
 SELECT password FROM customers LIMIT 0,2;          //choisir 2 password à partir de 0
@@ -67,7 +67,8 @@ SELECT * FROM customers ORDER BY id ASC;		  //Croissant
 SELECT * FROM customers ORDER BY id DESC;	  //Descroissant
 SELECT * FROM customers ORDER BY first_name;      //Alphabitique
 SELECT friste_name FROM customers ORDER BY first_name;
---------Count
+
+## Count
 SELECT COUNT(*) FROM utilisateurs;
 SELECT COUNT(*) AS poubilation FROM utilisateurs;
 SELECT    COUNT(*) AS poubilation, 
@@ -83,33 +84,33 @@ SELECT * FROM `utilisateurs` WHERE nom LIKE'%q';    //termine
 SELECT * FROM utilisateurs WHERE id IN(1,4,5);
 
 
-#-------------------- INSERT ----------------------
+## INSERT 
 INSERT INTO customers(first_name,last_name,email,password,avatar,join_date) VALUES('Qannaf','AL-SAHMI','qannafalsahmi@gmail.com','1234','image/qannaf.jpg',NOW());
 INSERT INTO customers(first_name,last_name) VALUES('Qannaf','AL-SAHMI');
 		
-		------- INSERT ++++ --------
+		* ------- INSERT ++++ --------
 		INSERT INTO customers(first_name,last_name,email,password,avatar,join_date) 
 		VALUES
 		('Qannaf','AL-SAHMI','qannafalsahmi@gmail.com','1234','image/qannaf.jpg',NOW()),
 		('Qannaf1','AL-SAHMI1','qannafalsahmi@gmail.com','1234','image/qannaf.jpg',NOW());
 		
-		-------2éme Méthode -------------
+		* -------2éme Méthode -------------
 		INSERT INTO utilisateurs SET
 			nom='bounaoara', 
             		prenom='rina', 
             		sexe='F';
 	
 
-#-------------------- UPDATE ----------------------
+## UPDATE 
 UPDATE customers SET password='azerty';
 UPDATE customers SET password='1234' WHERE first_name='Qannaf';
 UPDATE customers SET password='1234' WHERE first_name='Qannaf' LIMIT 1;
 
-#-------------------- DELETE ----------------------
+## DELETE 
 DELETE FROM customers WHERE first_name='Qannaf';
 
 
-#-------------------- WHERE ----------------------
+## WHERE 
 SELECT * FROM customers WHERE last_name='smith';
 SELECT * FROM customers WHERE id=18;
 SELECT * FROM customers WHERE id<5;
@@ -118,12 +119,12 @@ SELECT * FROM customers WHERE id<5 OR last_name='smith';
 SELECT * FROM customers WHERE (id<5 AND last_name='smith') OR first_name='Donald';
 SELECT * FROM customers WHERE last_name IN ('Smith','Thompson')
 
-#------------------ ALIAS -------------------------
+## ALIAS 
 SELECT email, password AS motdepasse FROM customers;    //changer le nome d'affichage pour password --> motdepasse
 SELECT customer, CONCAT(address,'-',address2,'-',city,'-',state,':',zipcode) FROM customer_addresses;       
 SELECT customer, CONCAT(address,'-',address2,'-',city,'-',state,':',zipcode) AS adress_Complete FROM customer_addresses;
 
-#------------------ JOIN -------------------------
+## JOIN 
 SELECT product_categories.name, products.name FROM product_categories INNER JOIN products ON product_categories.id=products.category;	   //jointure seulement
 SELECT product_categories.name, products.name FROM product_categories LEFT JOIN products ON product_categories.id=products.category;       //Toutes les catégorie
 SELECT product_categories.name, products.name FROM product_categories RIGHT JOIN products ON product_categories.id=products.category;
@@ -131,7 +132,7 @@ SELECT pc.name, p.name FROM product_categories AS pc RIGHT JOIN products AS p ON
 SELECT pc.name AS categoryName, p.name AS productsName FROM product_categories AS pc RIGHT JOIN products AS p ON pc.id=p.category;
 
 
-#----------------------- FUNCTION -----------------
+## FUNCTION 
 		1) Fuction Numérique
 			SELECT *,SQRT(prix) FROM tableau;
 
@@ -177,26 +178,26 @@ SELECT pc.name AS categoryName, p.name AS productsName FROM product_categories A
 					j
  
 
-#------------------ DUMPS ---------------------------------------
+## DUMPS 
 importer et exporter 
         
         
 
-#------------------ JOINTURES DETAILS -------------------------
+## JOINTURES DETAILS 
 		SELECT * FROM t1 RIGHT JOIN t2 ON t1.id=t2.id
                 SELECT * FROM t1 LEFT JOIN t2 ON t1.id=t2.id 
                 SELECT * FROM t1 INNER JOIN t2 ON t1.id=t2.id 
                 SELECT * FROM products RIGHT JOIN product_categories ON products.category=product_categories.id
          
 
-#------------------ UNION-------------------------
+## UNION
 		SELECT * FROM t1
 			UNION              //concatener les 2 tableaux
 		SELECT * FROM t2
 		
 
 
-#------------- SQL AVANCE ----------------------
+## SQL AVANCE 
 	1) Fonction Date et d'heures
 	   EXTRACT(month FROM "2020/04/08")
 

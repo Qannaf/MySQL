@@ -7,6 +7,8 @@ __This repository contains notes and examples__ to get started MySQL.
 
 ## Table of Contents
 1. [Introduction](#Introduction)  
+	1. [XAMPP](#XAMPP)
+	1. [phpMyAdmin](#phpMyAdmin)
 1. [CREATE ](#CREATE) 
 1. [DROP](#DROP)
 1. [DELETE](#DELETE)
@@ -20,6 +22,9 @@ __This repository contains notes and examples__ to get started MySQL.
 1. [ALIAS](#ALIAS)
 1. [JOIN](#JOIN)
 1. [FUNCTION](#FUNCTION)
+	1. [Fuction Numérique](#Fuction_Numerique)
+	1. [Fuction Texte](#Fuction_Texte)
+	1. [Fuction Date](#Fuction_Date)	
 1. [DUMPS](#DUMPS)
 1. [JOINTURES DETAILS](#JOINTURES_DETAILS)
 1. [UNION](#UNION)
@@ -29,9 +34,12 @@ __This repository contains notes and examples__ to get started MySQL.
  
 <a name="Introduction"></a>
 ## Introduction
-To start we need to :
+To start we need to 
+<a name="XAMPP"></a>:
 * Open XAMPP \n
 ![xampp](images/xampp.PNG?raw=true "xampp")
+
+<a name="phpMyAdmin"></a>
 * open phpMyAdmin
 http://localhost:8090/phpmyadmin
 ![phpMyAdmin](images/phpMyAdmin.PNG?raw=true "phpMyAdmin")
@@ -197,61 +205,106 @@ SELECT pc.name AS categoryName, p.name AS productsName FROM product_categories A
 
 <a name="FUNCTION"></a>
 ## FUNCTION 
-
+<a name="Fuction_Numerique"></a>
 1. Fuction Numérique
 	SELECT *,SQRT(prix) FROM tableau;
 
+<a name="Fuction_Texte"></a>
 1. Fuction Texte
-	1. CONCAT          
+	1. CONCAT
+		```	
 		SELECT *, CONCAT(prenom,'',nom) AS nomPrenom  FROM utilisateurs;
+		```
     1. LENGTH          
+		```
 		SELECT *, LENGTH(prenom) AS taille  FROM utilisateurs;
+		```
 	1. LIKE            
+		```
 		SELECT *  FROM utilisateurs WHERE prenom LIKE 'q%';
+		```
 	1. LOWER           
+		```
 		SELECT *,LOWER(prenom) AS prenomMini FROM utilisateurs ;
+		```
 	1. UPPER 	  
+		```
 		SELECT *,UPPER(prenom) AS prenomMax FROM utilisateurs ;
+		```
     1. SUBSTR          
+		```
 		SELECT *,SUBSTR(prenom,3) AS troisChar FROM utilisateurs ;
-	    SELECT *,SUBSTR(prenom,3,1) AS troisChar FROM utilisateurs ;
+		SELECT *,SUBSTR(prenom,3,1) AS troisChar FROM utilisateurs ;
+		```
 	1. REPLACE         
+		```
 		SELECT *,REPLACE(prenom,'qannaf','ahmed') AS remplacerNom FROM utilisateurs ;
+		```
 	1. SOUNDEX	  
+		```
 		SELECT *,SOUNDEX(prenom) FROM utilisateurs;
-	1.REVERSE         
+		```
+	1. REVERSE         
+		```
 		SELECT *,REVERSE(prenom) FROM utilisateurs;
-	1.TRIM            
+		```
+	1. TRIM            
+		```
 		SELECT *,TRIM('             bar      ') FROM utilisateurs;
 		SELECT *,TRIM(BOTH 'x' FROM 'xxxxxbarxxxxxxxxx') FROM utilisateurs;
 		SELECT *,TRIM(LEADING 'x' FROM 'xxxxxbarxxxxxxxxx') FROM utilisateurs;
         SELECT *,TRIM(TRAILING 'x' FROM 'xxxxxbarxxxxxxxxx') FROM utilisateurs;
+		```
 
+<a name="Fuction_Date"></a>
 1. Fuction Date
 	1. ADDDATE          
+		```
 		SELECT *,ADDDATE(birthday, 10) AS jouter10jours FROM utilisateurs;
+		```
 	1. SUBDATE          
+		```
 		SELECT *,SUBDATE(birthday, 10) AS jouter10jours FROM utilisateurs;
+		```
 	1. ADDTIME          
+		```
 		SELECT *,ADDTIME(birthday, "1 01:00:00") AS jouter10jours FROM utilisateurs;
+		```
 	1. SUBTIME          
+		```
 		SELECT *,SUBTIME(birthday, "1 01:00:00") AS jouter10jours FROM utilisateurs;
+		```
 	1. NOW              
+		```
 		SELECT *,NOW() AS tempsCeJours FROM utilisateurs;                            //year/mois/jour h:m:s
+		```
 	1. CURDATE          
+		```
 		SELECT *,CURDATE() AS tempsCeJours FROM utilisateurs;   //yeae/mois/jours
+		```
 	1. CURTIME         
+		```
 		SELECT *,CURTIME() AS tempsCeJours FROM utilisateurs;   //h:m:s
+		```
 	1. DATEDIFF         
+		```
 		SELECT *,DATEDIFF(CURDATE(),birthday) AS numJours FROM utilisateurs;
+		```
 	1. FROM_DAYS        
+		```
 		SELECT *,FROM_DAYS(DATEDIFF(CURDATE(),birthday)) AS numYears FROM utilisateurs;
 		SELECT *,TRIM(LEADING '0' FROM FROM_DAYS(DATEDIFF(CURDATE(),birthday)))  AS numYears FROM utilisateurs;
+		```
 	1. DATE             
+		```
 		SELECT * ,DATE('2020-03-03 01:34:45') AS temps FROM utilisateurs;
+		```
 	1. DATE_FORMAT      
+		```
 		SELECT * ,DATE_FORMAT(birthday,"%W %d %Y") AS temps FROM utilisateurs ;
+		```
 	1. YEAR             
+		```
 		SELECT * ,YEAR(birthday) AS yearsB FROM utilisateurs;
 		SELECT COUNT(*) ,YEAR(birthday) AS pubilation FROM utilisateurs GROUP BY YEAR(birthday);
 		SELECT COUNT(*) ,YEAR(birthday) AS y,
@@ -259,6 +312,7 @@ SELECT pc.name AS categoryName, p.name AS productsName FROM product_categories A
 						DAY(birthday) AS j
 		  FROM utilisateurs 
 						GROUP BY y,m,j;
+		```
  
  
 <a name="DUMPS"></a>

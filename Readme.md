@@ -1,8 +1,11 @@
 <p align="center">
   <img width="350" height="197" src="images/MySQL.png">
 </p>
+
 # Mysql
-## Start 
+____This repository contains notes and examples__ to get started MySQL. 
+## Introduction
+To start w need to :
 * Open XAMPP
 ![xampp](images/xampp.PNG?raw=true "xampp")
 * open phpMyAdmin

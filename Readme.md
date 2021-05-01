@@ -1,8 +1,16 @@
+<p align="center">
+  <img width="350" height="197" src="images/MySQL.png">
+</p>
 # Mysql
+## Start 
+* Open XAMPP
+![xampp](images/xampp.PNG?raw=true "xampp")
+* open phpMyAdmin
 http://localhost:8090/phpmyadmin
-XAMPP
-phpMyAdmin
-moteur de stokage : InnoDB ou MyISAM
+![phpMyAdmin](images/phpMyAdmin.PNG?raw=true "phpMyAdmin")
+* moteur de stokage 
+  * InnoDB
+  * MyISAM
 
 
 ## CREATE 
